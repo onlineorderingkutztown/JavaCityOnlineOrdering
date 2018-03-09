@@ -1,0 +1,93 @@
+<!--
+Name: Bryce Andress
+Prof: Hussain
+Class: Web Programming I
+Date: 2/27/17
+URL: www.unixweb.kutztown.edu/~bandr670/Project/Phase1/login.html
+Project Phase 1
+Login page for Bryce's Books
+
+External Style Sheet: Has been used on all pages and can be found in between <head> </head>
+Embedded Style Sheet: Can be found on the createaccount.html page
+-->
+<head>
+	<title> Login </title>
+	<link rel="stylesheet" href="mystyles.css">
+	<style type="text/css">
+	.container {
+		width: 500px;
+		clear: both;
+	}
+	.container input {
+		width: 100%;
+		clear: both;
+	}
+	</style>
+	<!--
+	Function output()
+	Parameters: None
+	Description: Check the data the user enterd. If it pass checks ask the user if they want to submit data to "server". If they do output
+	the data on a dom object. If they do not return to the form.
+	-->
+	<script type="text/javascript">
+	<!--
+	function output()
+	{
+		var email = document.getElementById("email").value;
+		if (!email.includes("@"))
+		{
+			alert ("Email must contain an @ and a .");
+			return false;
+		}
+		if (!email.includes("."))
+		{
+			alert ("Email must contain an @ and a .");
+			return false;
+		}
+
+		if(document.getElementById("email").value == "" || document.getElementById("password").value == "")
+		{
+			alert("Please fill in all required fields");
+			return false
+		}
+
+		if(confirm ('Are you sure you want to login?'))
+		{
+			document.forms["login"].submit();
+			return true;
+		}
+		else
+			return false;
+	}
+	-->
+	</script>
+</head>
+<body>
+<center>
+<form name="login" action="login.php" method="POST">
+  <h3> Login </h3>
+  <table>
+    <tr>
+      <td align="right">E-Mail:<font color=red>*</font></td>
+      <td align="left"><input type="text" id="email" name="email" required/></td>
+		</tr>
+		<tr>
+      <td align="right">Password:<font color=red>*</font></td>
+      <td align="left"><input type="password" id="password" name="password" required/></td>
+    </tr>
+	</table>
+	&emsp; &emsp; &emsp; &emsp;<font color=red>*</font> denotes required field. <br>
+	&emsp; &emsp; &emsp; &emsp;<input type="button" value="Login" onclick="output();">
+	<input type="reset" value="Clear" onclick="return confirm ('Are you sure you want to clear?');">
+</center>
+</form>
+		<div class="footer">
+			<a href="./index.html"> Home </a> &nbsp;
+			<a href="./search.html"> Search </a> &nbsp;
+			<a href="./browse.php"> Browse Categories </a> &nbsp;
+			<a href="./login.html"> Login </a>&nbsp;
+			<a href="./createaccount.html">Create Account </a> &nbsp;
+			<a href="./orders.php"> Orders </a> &nbsp;
+			<a href="./contact.html"> Contact Us </a>
+		</div>
+</body>

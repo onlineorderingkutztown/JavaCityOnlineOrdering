@@ -1,0 +1,96 @@
+<!--
+Name: Bryce Andress
+Prof: Hussain
+Class: Web Programming I
+Date: 2/27/17
+URL: www.unixweb.kutztown.edu/~bandr670/Project/Phase1/contact.html
+Project Phase 1
+Contact page for Bryce's Books
+
+External Style Sheet: Has been used on all pages and can be found in between <head> </head>
+Embedded Style Sheet: Can be found on the createaccount.html page
+-->
+<head>
+	<title> Contact Bryce's Books </title>
+	<link rel="stylesheet" type="text/css" href="mystyles.css">
+	<!--
+	Function sent()
+	Parameters: None
+	Description: If user has entered email name and a message send it to the "server" for output
+	-->
+	<script type="text/javascript">
+	<!--
+	function sent()
+	{
+		var email = document.getElementById("email").value;
+
+		if(document.getElementById("name").value == "" || document.getElementById("email").value == "" || document.getElementById("message").value == "")
+		{
+			return alert("Please fill in all required fields");
+		}
+		if (!email.includes("@"))
+			return alert ("Email must contain an @ and a .");
+		if (!email.includes("."))
+			return alert ("Email must contain an @ and a .");
+
+		if(confirm ('Are you sure you want to send email?'))
+		{
+			document.forms["contact"].submit();
+		}
+		else
+			return;
+	}
+	-->
+	</script>
+</head>
+<body>
+<center>
+	<h1> Contact Bryce's Books</h1>
+	<p>
+	If you are interested in getting a quote for a rare book you can contact us in a couple
+	ways. <br> <br>
+	Call: 1-800-333-BOOKS <br> E-Mail: <a href="mailto:bryce@brycesbooks.com"> bryce@brycesbooks.com </a> <br>
+	USPS Mail: <br>
+	<br>
+	Bryce's Books
+	43 Main St.<br>
+	Kutztown PA 19530<br>
+  <br>
+	Hours of Operation:<br>
+	Monday-Friday: 10AM-6PM<br>
+	Saturday:  10AM-3PM<br>
+	Sunday:  Closed<br>
+  <br>
+	Contact Us:
+	</p>
+	<form name="contact" id="contact_form" action="contact.php" method="POST">
+		<div class="row">
+			<label for="name">Your name:<font color=red>*</font></label>
+			<input id="name" class="input" name="name" type="text" size="30" required/><br />
+		</div>
+		<div class="row">
+			<label for="email">Your email:<font color=red>*</font></label>
+			<input id="email" class="input" name="email" type="text" size="30" required/><br />
+		</div>
+		<div class="row">
+			<label for="message">Your message:<font color=red>*</font></label><br />
+			<textarea id="message" class="input" name="message" rows="9" cols="80"></textarea><br required/>
+		</div>
+		<input id="button" type="button" value="Send email" onclick="sent();">
+	</form>
+	<font color=red>*</font></label> denotes a required field.
+	</center>
+	<p class="topcorner">
+	<a href="login.html"> Login </a>
+	</p>
+	<div class="footer">
+			<a href="./index.html"> Home </a> &nbsp;
+			<a href="./search.html"> Search </a> &nbsp;
+			<a href="./login.html"> Login </a>&nbsp;
+			<a href="./browse.php"> Browse Categories </a>&nbsp;
+			<a href="./createaccount.html">Create Account </a> &nbsp;
+			<a href="./orders.php"> Orders </a>&nbsp;
+			<a href="./contact.html"> Contact Us </a>
+		</div>
+</body>
+

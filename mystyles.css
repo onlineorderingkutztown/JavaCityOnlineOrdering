@@ -1,0 +1,43 @@
+a{
+	text-decoration: none;
+	font: 15px Helvetica Neue, sans-serif;
+}
+
+body{
+	margin-top: 25px;
+	text-align: center;
+	background-image: url("Images/wallpaper.jpg");
+	background-size:     cover;              
+	background-repeat:   no-repeat;
+
+}
+
+div{
+	background-color: rgb(255,255,255);
+	padding: 25px;
+}
+
+h2{
+	font: bold 25px arial, sans-serif;
+}
+
+h3{
+	font: bold 20px arial, sans-serif;	
+}
+
+p{
+	font: 15px arial, sans-serif;
+}
+
+l{
+	font: 18px arial, sans-serif;
+}
+
+td{
+	text-align: justify;
+}
+
+th{
+	text-align: left;	
+}
+

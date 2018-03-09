@@ -1,0 +1,60 @@
+<!--
+Name: Bryce Andress
+Prof: Hussain
+Class: Web Programming I
+Date: 2/27/17
+URL: www.unixweb.kutztown.edu/~bandr670/Project/Phase1/contact.html
+Project Phase 1
+Search page for Bryce's Books
+
+External Style Sheet: Has been used on all pages and can be found in between <head> </head>
+Embedded Style Sheet: Can be found on the createaccount.html page
+-->
+<head>
+	<title> Search Bryce's Books Selection </title>
+	<link rel="stylesheet" type="text/css" href="mystyles.css">
+	<!--
+	Function search()
+	Parameters: None
+	Description: Search DB for books
+	-->
+	<script type="text/javascript">
+  <!--
+	function Search()
+	{
+		if(confirm ('Are you sure you want to search?'))
+		{
+			document.forms["search"].submit();
+			return true;
+		}
+		else
+			return false;
+	}
+	-->
+	</script>
+</head>
+<body>
+<center>
+	<h1> Search Bryce's Books</h1>
+	<form name="search" id="search_form" action="search.php" method="POST">
+		<div class="row">
+			<label for="searchname">Search ISBN or Title:</label>
+			<input id="search" class="input" name="search" type="text" size="30">
+		  <input id="button" type="button" value="Search" onclick="Search();">
+		</div>
+	</form>
+	</center>
+	<p class="topcorner">
+	<a href="login.html"> Login </a>
+	</p>
+	<div class="footer">
+			<a href="./index.html"> Home </a> &nbsp;
+			<a href="./search.html"> Search </a> &nbsp;
+			<a href="./browse.php"> Browse Categories </a> &nbsp;
+			<a href="./login.html"> Login </a>&nbsp;
+			<a href="./createaccount.html">Create Account </a> &nbsp;
+			<a href="./orders.php"> Orders </a> &nbsp;
+			<a href="./contact.html"> Contact Us </a>
+		</div>
+</body>
+
