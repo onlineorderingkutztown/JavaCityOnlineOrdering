@@ -62,6 +62,7 @@
 		<input type="submit" value="Update Hours">
 		</form>
 		</center>
+<a href="itemavailability.php">Item Availability</a>
 </div>
 </body>
 
