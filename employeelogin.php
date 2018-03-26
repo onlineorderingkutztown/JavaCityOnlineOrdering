@@ -83,6 +83,8 @@
 <?php
 	$email = $_POST['email'];
   	$password = $_POST['password'];
+	$password = hash('sha512',$password);
+
 
 	$DB_HOST='localhost';
 	$DB_USER='cscproject';

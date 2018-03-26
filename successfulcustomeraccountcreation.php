@@ -1,8 +1,10 @@
 <?php
 	$email = $_POST['email'];
+	include 'links.php'
 ?>
+
 <head>
-	<title> Login </title>
+	<title> Customer Login </title>
 	<link rel="stylesheet" href="mystyles.css">
 	<style type="text/css">
 	.container {
@@ -56,10 +58,9 @@
 <body>
 <a href="./index.php"><img src="Images/javalogo.png" alt="javalogo" style="width:100px;height 200px;"></a>
 <div>
-<h2> Incorrect E-Mail/Password/Privilege Level </h2>
 <center>
-<form name="login" action="badmanagementlogin.php" method="POST">
-  <h2> Management Login </h2>
+<form name="login" action="badcustomerlogin.php" method="POST">
+  <h2> Customer Login </h2>
   <table>
     <tr>
       <td align="right">E-Mail:<font color=red>*</font></td>
@@ -75,6 +76,8 @@
 	<input type="reset" value="Clear" onclick="return confirm ('Are you sure you want to clear?');">
 	
 	<br>
+	<p> Don't have an account? Create one here! </p>
+	<a href="createcustomeraccount.php"> Create Account </a>
 </center>
 </form>
 </div>
@@ -82,7 +85,6 @@
 <?php
 	$email = $_POST['email'];
   	$password = $_POST['password'];
-	$password = hash('sha512', $password);
 
 	$DB_HOST='localhost';
 	$DB_USER='cscproject';
@@ -90,14 +92,14 @@
 	$DB_NAME='project';
 
   $conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-	$query = "SELECT password, isManager FROM employees WHERE email = '$email'";
+	$query = "SELECT password FROM customer WHERE email = '$email'";
 	$res = $conn->query($query);
 	while($row = mysqli_fetch_assoc($res))
-		if ($row["password"] == "$password" && $row["isManager"] == 1)
+		if ($row["password"] == "$password")
 		{ echo "<h1>Logged in</h1>";
 			session_start();
 			$_SESSION["isLogged"] = true;
-			header('Location: managementorders.php');
+			header('Location: customerorders.php');
 		}
 	$conn->close();
 ?>
