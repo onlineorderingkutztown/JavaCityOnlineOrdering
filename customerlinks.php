@@ -1,3 +1,4 @@
+<?php SESSION_START(); ?>
 <!DOCTYPE html>
 <!--
 Name: Brent Heil

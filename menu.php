@@ -1,3 +1,4 @@
+<?php SESSION_START(); ?>
 <!DOCTYPE html>
 <!--
 Name: Bryce Andress
@@ -21,19 +22,18 @@ Prof: Hussain
 <?php
 include 'links.php'
 ?>
-<div>
-<body> <h1 align="center"> Menu </h1> 
-	<center>
-	<th>Beverages</th><br>
-	<td><input type="checkbox" name="menu" value="coffee" />Medium Coffee $2.75</td>
-	<td><input type="checkbox" name="menu" value="coffee" />Strawberry Smoothie $3.25</td><br>
-	<br>
-	<th>Food</th><br>
-	<td><input type="checkbox" name="menu" value="donut" />Chocolate Frosted Donut $.97</td>
-	</center>
-	<input type="submit" style="float: right;" value="Submit"
-    onclick="window.location='cart.php';" />
-</div>
+<body> 
+<?php
+require_once 'functions.php';
+$menuItems = getMenu();
+
+foreach($menuItems as $item) {
+        echo getItemString($item);
+}
+
+echo "<div>SOMETHING</div>";
+?>
+
  <!--	<div class="footer"> <a href="./index.html"> Home </a> &nbsp; <a href="./login.html"> Login </a>&nbsp;
 		<a href="./createaccount.html">Create Account </a> &nbsp;
 		<a href="./contact.html"> Contact Us </a>

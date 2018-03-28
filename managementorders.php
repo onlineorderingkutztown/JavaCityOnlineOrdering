@@ -5,10 +5,9 @@ Prof: Hussain
 -->
 <?php
   session_start();
-  if(!$_SESSION['isLogged'] && !$_SESSION('isManager'))
+  if(!$_SESSION['isLogged'] || !$_SESSION['isManager'])
   {
-    header("location:managementlogin.html");
-    die();
+     header("Location: http://doopliss.com/kuproject/logins.php");
   } 
 ?>
 <head>
@@ -34,20 +33,15 @@ include 'managementlinks.php'
   	$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 	$query = "SELECT * FROM orders WHERE isCompleted=0";
 	$res = $conn->query($query);
-	echo "<table border=1><tr><th>Order ID</th><th>Customer ID</th><th>Time Placed</th><th>Subtotal</th><th>Tax</th><th>Total</th><th>Completed?</th></tr>";
+	echo "<table border=1><tr><th>Order ID</th><th>Order Details</th><th>Time Placed</th><th>Total</th><th>Completed?</th></tr>";
 	$number = 1;
 	while($row = mysqli_fetch_assoc($res))
 	{
-			$title =  $row["order_id"];
-			$author = $row["customer_id"];
-			$author2 = $row["placed"];
-			$author3 = $row["subtotal"];
-			$quantity = $row["tax"];
-			$price = number_format($row["total"], 2);
-			$author3 = number_format($row["subtotal"], 2);
-			$quantity = number_format($row["tax"], 2);
+			$orderid =  $row["order_id"];
+			$placed = $row["placed"];
+			$total = number_format($row["total"], 2);
 
-			echo "<tr><td>".$title."</td><td>".$author."</td><td>".$author2."</td><td>".$author3."</td><td>".$quantity."</td><td>".$price."</td><td><a href='./completed.php?orderid=".$title."'>Complete</a></tr>";
+			echo "<tr><td>".$orderid."</td><td><a href='./orderdetails.php?orderid=".$orderid."'>Order Details</a></td><td>".$placed."</td><td>".$total."</td><td><a href='./completed.php?orderid=".$orderid."'>Complete</a></tr>";
 	}
 	echo "</table>";
   $conn->close();

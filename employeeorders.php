@@ -3,6 +3,10 @@
 Name: Bryce Andress
 Prof: Hussain
 -->
+<head>
+	<title> Java City Online Ordering </title>
+	<link rel="stylesheet" type="text/css" href="mystyles.css">
+</head>
 <?php
   session_start();
   if(!$_SESSION['isLogged'])
@@ -11,10 +15,6 @@ Prof: Hussain
     die();
   } 
 ?>
-<head>
-	<title> Java City Online Ordering </title>
-	<link rel="stylesheet" type="text/css" href="mystyles.css">
-</head>
 
 <?php
 include 'employeelinks.php'

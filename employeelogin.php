@@ -99,6 +99,7 @@
 		{ echo "<h1>Logged in</h1>";
 			session_start();
 			$_SESSION["isLogged"] = true;
+			$_SESSION["isManager"] = false;
 			header('Location: employeeorders.php');
 		}
 	$conn->close();

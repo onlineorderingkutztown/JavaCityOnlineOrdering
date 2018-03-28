@@ -22,7 +22,7 @@ include 'managementlinks.php'
 
 <body>
 <div>
-<h2 align="center"> Current Orders </h2>
+<h2 align="center"> Item Availability </h2>
 <center>
 	<?php
 	$DB_HOST='localhost';
@@ -32,30 +32,23 @@ include 'managementlinks.php'
 
 
   	$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-	$query = "SELECT * FROM food ORDER BY category";
+	$query = "SELECT * FROM food";
 	$res = $conn->query($query);
-	echo "<table border=1><tr><th>Food Name</th><th>Food Category</th><th>Availability</th><th>Mark Unavailable</th><td>Remove Item</td></tr>";
-	$number = 1;
+	echo "<table border=1><tr><th>Food Name</th><th>Availability</th><th>Mark Unavailable</th><th>Remove Item Permanently</th></tr>";
 	while($row = mysqli_fetch_assoc($res))
 	{
 			$id = $row["food_id"];
 			$name = $row["name"];
-			$category = $row["category"];
-			if ($category == 0)
-				$category = "Coffee";
-			else if ($category == 1)
-				$category = "Donut";
-			else if ($category == 2)
-				$category = "Smoothie";
-			else
-				$category = "Bagel";
+			$small = $row["price_s"];
+			$medium = $row["price_m"];
+			$large = $row["price_l"];
 			$availability = $row["availability"];
 			if ($availability == 0)
 				$availability = "Unavailable";
 			else
 				$availability = "Available";
 
-			echo "<tr><td>".$name."</td><td>".$category."</td><td>".$availability."</td><td><a href='./availability.php?foodid=".$id."'>Change Availablity</a></td><td><a href='./removeitem.php?foodid=".$id."'>Remove Item</a></td><tr>";
+			echo "<tr><td>".$name."</td><td>".$availability."</td><td><a href='./availability.php?foodid=".$id."'>Change Availablity</a></td><td><a href='./removeitem.php?foodid=".$id."'><center>Remove Item</center></a></td><tr>";
 	}
 	echo "</table>";
   $conn->close();

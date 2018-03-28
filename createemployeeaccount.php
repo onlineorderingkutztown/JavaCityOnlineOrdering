@@ -1,5 +1,5 @@
 <?php
-include 'links.php'
+include 'managementlinks.php'
 ?>
 
 <head>

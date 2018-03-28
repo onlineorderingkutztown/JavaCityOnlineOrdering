@@ -25,8 +25,8 @@ include 'links.php';
    <body>
 	  <div>	  
 		<h1> About </h1>
-		<p> Course: CSC 354 - Software Engineering I </p>
-		<p> Project Members: Austin Bragg, Brent Heil, Bryce Andress, Robert Jacobs</p>	
+		<p> Course: CSC 355 - Software Engineering II </p>
+		<p> Project Members: Austin Bragg, Brent Heil, Bryce Andress, Robert Jacobs, Andrew Newman</p>	
 		<p> Objective: Users can place an order at Java City before arrival to improve customer wait times and employee productivity</p>	  
 		<a href="https://www.kutztown.edu/"><img src="Images/ku.jpg" alt="javalogo" style="width:300px;height 150px;"></a>
 		<br>

@@ -1,3 +1,4 @@
+<?php SESSION_START(); ?>
 <!DOCTYPE html>
 <!--
 Name: Bryce Andress
@@ -19,19 +20,39 @@ Prof: Hussain
 include 'links.php'
 ?>
 <body>
-<div>
-<h1 align="center"> Your Order </h1> <center>
-	Medium Coffee $2.75 <br />
-	Chocolate Frosted Donut $.97 <br />
-	Your order will be ready for pickup in 5 minutes from Java City. <br />
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<b> Subtotal: $3.72 <br /></b>
-	<b> Tax: $0.22 <br /></b>
-	<b> Subtotal: $3.94 <br /></b>
-	</center>
-</div>
+<?php
+
+echo '<div><h1>' . print_r($_SESSION) . '</h1></div>';
+
+require_once 'functions.php';
+
+$exist = isset($_SESSION['user']);
+    $total =0;
+    if(!$exist)
+    {
+      echo "<div><p>Please Log In to save items to the cart.</p></div>";
+    }else
+    {
+
+    	if(!isset($_SESSION['cart']))
+    	{
+    		$mycart = [];
+    		$_SESSION['cart'] = $mycart;
+    	}
+
+	if(isset($_GET['food']))
+    	{
+    		$records = getSearchRecords($_GET['food']);
+
+    		if(!isset($_SESSION['cart'][$_GET['food']]))
+    		{
+    			$_SESSION['cart'][$_GET['food']] = 1;
+    		}
+
+    	}
+     }
+
+
+?>
 </body>
 

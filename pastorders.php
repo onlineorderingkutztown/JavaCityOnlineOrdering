@@ -9,7 +9,7 @@
     header("location:managementlogin.html");
     die();
   } 
-  include 'adminlinks.php'
+  include 'managementlinks.php'
 ?>
 
 <body>

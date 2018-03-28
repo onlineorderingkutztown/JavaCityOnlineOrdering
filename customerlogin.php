@@ -100,6 +100,7 @@
 		{ echo "<h1>Logged in</h1>";
 			session_start();
 			$_SESSION["isLogged"] = true;
+			$_SESSION["user"] = $email;
 			header('Location: customerorders.php');
 		}
 	$conn->close();
