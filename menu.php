@@ -25,6 +25,7 @@ include 'links.php'
 <body> 
 <?php
 require_once 'functions.php';
+echo "<div>SOMETHING</div>";
 $menuItems = getMenu();
 
 foreach($menuItems as $item) {
