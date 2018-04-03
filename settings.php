@@ -3,7 +3,7 @@
 <script src="js/combodate.js"></script>
 <?php
   session_start();
-  include 'managementlinks.php';
+  include 'links.php';
   if(!$_SESSION['isLogged'])
   {
     header("location:managementlogin.html");
@@ -29,7 +29,7 @@
 		$res = $conn->query($query);
 		echo "<h2>Store Hours</h2>";
 		echo "<p> Configure the order platform to best suit your needs <p> <br>";
-		echo "<table border=1><tr><th>Open</th><th>Close</th></tr>";
+		echo "<table class= hours><tr><th>Open</th><th>Close</th></tr>";
 		while($row = mysqli_fetch_assoc($res))
 		{
 			$open = $row["open_hour"];
@@ -62,7 +62,10 @@
 		<input type="submit" value="Update Hours">
 		</form>
 		</center>
-<a href="itemavailability.php">Item Availability</a>
 </div>
+<?php
+echo"<br><br>";
+include 'footer.php';
+?>
 </body>
 

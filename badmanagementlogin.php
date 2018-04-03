@@ -1,5 +1,28 @@
 <?php
 	$email = $_POST['email'];
+  	$password = $_POST['password'];
+	$password = hash('sha512', $password);
+
+	$DB_HOST='localhost';
+	$DB_USER='cscproject';
+	$DB_PASS='csc354';
+	$DB_NAME='project';
+
+  	$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+	$query = "SELECT password, isManager FROM employees WHERE email = '$email'";
+	$res = $conn->query($query);
+	while($row = mysqli_fetch_assoc($res))
+		if ($row["password"] == "$password" && $row["isManager"] == 1)
+		{
+			session_start();
+			$_SESSION["isLogged"] = true;
+			$_SESSION["isManager"] = true;
+			$_SESSION["isEmployee"] = false;
+			$_SESSION["isCustomer"] = false;
+			header('Location: managementorders.php');
+		}
+	$conn->close();
+	include 'links.php'
 ?>
 <head>
 	<title> Login </title>
@@ -80,25 +103,5 @@
 </div>
 </body>
 <?php
-	$email = $_POST['email'];
-  	$password = $_POST['password'];
-	$password = hash('sha512', $password);
-
-	$DB_HOST='localhost';
-	$DB_USER='cscproject';
-	$DB_PASS='csc354';
-	$DB_NAME='project';
-
-  $conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-	$query = "SELECT password, isManager FROM employees WHERE email = '$email'";
-	$res = $conn->query($query);
-	while($row = mysqli_fetch_assoc($res))
-		if ($row["password"] == "$password" && $row["isManager"] == 1)
-		{ echo "<h1>Logged in</h1>";
-			session_start();
-			$_SESSION["isLogged"] = true;
-			$_SESSION["isManager"] = true;
-			header('Location: managementorders.php');
-		}
-	$conn->close();
+include 'footer.php'
 ?>

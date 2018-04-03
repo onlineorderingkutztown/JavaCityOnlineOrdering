@@ -69,8 +69,8 @@ include 'links.php'
 			<td align="right">Confirm Password<font color=red>*</font>:</td>
       <td align="left"><input type="password" id="pconfirm" name="confirmpassword" required/></td>
     </tr>
-			<td align="right">Phone Number:<font color=red>*</font></td>
-			<td align="left"><input type="text" id="phone" name="phone" required/></td>
+			<!--<td align="right">Phone Number:</td>
+			<td align="left"><input type="text" id="phone" name="phone" /></td>-->
 	</table>
 	<p><font color=red>*</font> denotes a required field </p>
 	<!-- <input type="button" value="Create Account" onclick="output();"> -->
@@ -80,4 +80,8 @@ include 'links.php'
 </form>
 </center>
 </div>
+<?php
+echo "<br><br>";
+include 'footer.php';
+?>
 </body>

@@ -1,22 +1,47 @@
 a{
 	text-decoration: none;
 	font: 15px Helvetica Neue, sans-serif;
+	text-align: center;
 }
 
 body{
-	margin-top: 25px;
+	border: 0;
+	margin: 0;
+	padding: 0;
 	text-align: center;
-	background-image: url("Images/wallpaper.jpg");
-	background-size:     cover;              
-	background-repeat:   no-repeat;
-
+	background-size: cover;              
+	background-repeat: no-repeat;
 }
 
 div{
-	background-color: rgb(255,255,255);
-	padding: 25px;
+	padding: 0px;
+	background: ffffff;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  background-color: #ffffff;
+  padding: 10px;
+}
+.grid-container > div {
+  background-color: #f7f7f7;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 30px;
+}
+
+h1 {
+	font-family: 'Helvetica Neue', sans-serif;
+	font-size: 40px;
+	font-weight: bold;
+	letter-spacing -1px;
+	line-height: 1;
+	text-align: center;
+	text-decoration: underline;
+}	
+	
 h2{
 	font: bold 25px arial, sans-serif;
 }
@@ -33,11 +58,56 @@ l{
 	font: 18px arial, sans-serif;
 }
 
+table.menu {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width:50%;
+    border: 1px solid #ddd;
+	text-align: left;
+}
+th.menu{
+	padding: 5px;
+}
+
+td.menu{
+	padding: 5px;
+}
+table.order {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width:40%;
+    border: 1px solid #ddd;
+}
+
+table.items {
+    border-collapse: collapse;
+    border-spacing: 0;
+	text-align: center;
+    width:50%;
+    border: 1px solid #ddd;
+}
+th.items{
+	padding: 5px;
+}
+td.items{
+	padding: 5px;
+}
+table.hours {
+    border-collapse: collapse;
+    border-spacing: 0;
+	text-align: center;
+    width:15%;
+    border: 1px solid #ddd;
+}
+
 td{
-	text-align: justify;
+	text-align: left;
 }
 
 th{
 	text-align: left;	
 }
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
 

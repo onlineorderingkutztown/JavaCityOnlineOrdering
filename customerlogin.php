@@ -78,9 +78,13 @@
 	<br>
 	<p> Don't have an account? Create one here! </p>
 	<a href="createcustomeraccount.php"> Create Account </a>
+	<br><br>
 </center>
 </form>
 </div>
+<?php
+include 'footer.php';
+?>
 </body>
 <?php
 	$email = $_POST['email'];
@@ -101,7 +105,10 @@
 			session_start();
 			$_SESSION["isLogged"] = true;
 			$_SESSION["user"] = $email;
-			header('Location: customerorders.php');
+			$_SESSION["isManager"] = false;
+			$_SESSION["isEmployee"] = false;
+			$_SESSION["isCustomer"] = true;
+			header('Location: customerwelcome.php');
 		}
 	$conn->close();
 ?>

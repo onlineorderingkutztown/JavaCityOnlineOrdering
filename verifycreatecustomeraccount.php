@@ -9,10 +9,10 @@ $last = $_GET['last'];
 $email = $_GET['email'];
 $password = $_GET['password'];
 $password = hash('sha512', $password);
-$phonenumber = $_GET['phone'];
+//$phonenumber = $_GET['phone'];
 
 $conn = new mysqli($DB_HOST,$DB_USER, $DB_PASS,	$DB_NAME);
-$query = "insert into customer (first_name, last_name, email, password, phone) VALUES ('$first', '$last', '$email', '$password', '$phonenumber')";
+$query = "insert into customer (first_name, last_name, email, password) VALUES ('$first', '$last', '$email', '$password')";
 if(!$conn -> query($query))
 {
 	echo(mysqli_error($conn));

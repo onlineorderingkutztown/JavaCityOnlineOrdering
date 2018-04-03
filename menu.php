@@ -1,4 +1,7 @@
-<?php SESSION_START(); ?>
+<?php 
+SESSION_START(); 
+include 'links.php';
+?>
 <!DOCTYPE html>
 <!--
 Name: Bryce Andress
@@ -7,32 +10,41 @@ Prof: Hussain
 <head>
 	<title> Java City Online Ordering </title>
 	<link rel="stylesheet" type="text/css" href="mystyles.css">
-	<style>
-	h1 {
-		font-family: 'Helvetica Neue', sans-serif;
-		font-size: 40px;
-		font-weight: bold;
-		letter-spacing -1px;
-		line-height: 1;
-		text-align: center;
-		text-decoration: underline;
-	}
-	</style>
-</head> 
-<?php
-include 'links.php'
-?>
+</head>
+
 <body> 
+<div>
+<center>
+<h1> Menu </h1>
 <?php
 require_once 'functions.php';
-echo "<div>SOMETHING</div>";
+
 $menuItems = getMenu();
+
+echo
+"
+	<table class= menu>
+	<tr>
+		<th class= menu> Name </th>
+		<th class= menu> Small </th>
+		<th class= menu> Medium </th>
+		<th class= menu> Large </th>
+		<th class= menu> Quantity </th>
+		<th class= menu> Order </th>
+	</tr>
+";
 
 foreach($menuItems as $item) {
         echo getItemString($item);
 }
 
-echo "<div>SOMETHING</div>";
+echo
+"
+	</table>
+	<br><br>
+";
+
+include 'footer.php';
 ?>
 
  <!--	<div class="footer"> <a href="./index.html"> Home </a> &nbsp; <a href="./login.html"> Login </a>&nbsp;
@@ -40,5 +52,8 @@ echo "<div>SOMETHING</div>";
 		<a href="./contact.html"> Contact Us </a>
 		</div> 
   -->
+</center>
+</div>
 </body>
+
 

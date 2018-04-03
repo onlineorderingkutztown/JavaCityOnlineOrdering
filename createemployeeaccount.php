@@ -1,11 +1,12 @@
 <?php
-include 'managementlinks.php'
+include 'links.php'
 ?>
 
 <head>
 	<title> Create Account </title>
 	<link rel="stylesheet" href="mystyles.css">
 	<style type="text/css">
+
 	</style>
 	<!--
 	Function output()
@@ -85,4 +86,8 @@ include 'managementlinks.php'
 </form>
 </center>
 </div>
+<?php
+echo "<br><br>";
+include 'footer.php';
+?>
 </body>

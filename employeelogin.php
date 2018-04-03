@@ -76,9 +76,13 @@
 	
 	<br>
 	<p> Don't have an account? Talk to your manager! </p>
+	<br><br>
 </center>
 </form>
 </div>
+<?php
+include 'footer.php';
+?>
 </body>
 <?php
 	$email = $_POST['email'];
@@ -100,6 +104,8 @@
 			session_start();
 			$_SESSION["isLogged"] = true;
 			$_SESSION["isManager"] = false;
+			$_SESSION["isEmployee"] = true;
+			$_SESSION["isCustomer"] = false;
 			header('Location: employeeorders.php');
 		}
 	$conn->close();

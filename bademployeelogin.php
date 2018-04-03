@@ -1,5 +1,28 @@
 <?php
+	include 'links.php';
 	$email = $_POST['email'];
+  	$password = $_POST['password'];
+	$password = hash('sha512',$password);
+
+	$DB_HOST='localhost';
+	$DB_USER='cscproject';
+	$DB_PASS='csc354';
+	$DB_NAME='project';
+
+  	$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+	$query = "SELECT password FROM employees WHERE email = '$email'";
+	$res = $conn->query($query);
+	while($row = mysqli_fetch_assoc($res))
+		if ($row["password"] == "$password")
+		{ echo "<h1>Logged in</h1>";
+			session_start();
+			$_SESSION["isLogged"] = true;
+			$_SESSION["isManager"] = false;
+			$_SESSION["isEmployee"] = true;
+			$_SESSION["isCustomer"] = false;
+			header('Location: employeeorders.php');
+		}
+	$conn->close();
 ?>
 <head>
 	<title> Login </title>
@@ -58,8 +81,8 @@
 <div>
 <h2> Incorrect E-Mail/Password/Privilege Level </h2>
 <center>
-<form name="login" action="employeelogin.php" method="POST">
-  <h2> Management Login </h2>
+<form name="login" action="bademployeelogin.php" method="POST">
+  <h2> Employee Login </h2>
   <table>
     <tr>
       <td align="right">E-Mail:<font color=red>*</font></td>
@@ -81,25 +104,5 @@
 </div>
 </body>
 <?php
-	$email = $_POST['email'];
-  	$password = $_POST['password'];
-	$password = hash('sha512',$password);
-
-	$DB_HOST='localhost';
-	$DB_USER='cscproject';
-	$DB_PASS='csc354';
-	$DB_NAME='project';
-
-  $conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-	$query = "SELECT password FROM employees WHERE email = '$email'";
-	$res = $conn->query($query);
-	while($row = mysqli_fetch_assoc($res))
-		if ($row["password"] == "$password")
-		{ echo "<h1>Logged in</h1>";
-			session_start();
-			$_SESSION["isLogged"] = true;
-			$_SESSION["isManager"] = false;
-			header('Location: employeeorders.php');
-		}
-	$conn->close();
+include 'footer.php'
 ?>

@@ -1,6 +1,6 @@
 <?php
 	$email = $_POST['email'];
-	include 'links.php'
+	include 'links.php';
 ?>
 <head>
 	<title> Login </title>
@@ -74,10 +74,13 @@
 	&emsp; &emsp; &emsp; &emsp;<input type="button" value="Login" onclick="output();">
 	<input type="reset" value="Clear" onclick="return confirm ('Are you sure you want to clear?');">
 	
-	<br>
+	<br><br><br><br><br>
 </center>
 </form>
 </div>
+<?php
+include 'footer.php';
+?>
 </body>
 <?php
 	$email = $_POST['email'];
@@ -97,7 +100,10 @@
 		{ echo "<h1>Logged in</h1>";
 			session_start();
 			$_SESSION["isLogged"] = true;
-			header('Location: managementorders.php');
+			$_SESSION["isManager"] = true;
+			$_SESSION["isEmployee"] = false;
+			$_SESSION["isCustomer"] = false;
+			//header('Location: managementorders.php');
 		}
 	$conn->close();
 ?>

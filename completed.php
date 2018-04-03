@@ -16,5 +16,14 @@
 	}
   	$conn->close();
 
-	header('Location: managementorders.php');
+  if($_SESSION['isLogged'] && $_SESSION['isEmployee']){
+    header("location:employeeorders.php");
+  } 
+	else if ($_SESSION['isLogged'] && $_SESSION['isManager']){
+		header("location:managementorders.php");
+	}
+		else
+		{
+			header("location:logins.php");
+		}
 ?>
