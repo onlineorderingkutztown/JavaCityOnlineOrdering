@@ -7,17 +7,24 @@ Prof: Hussain
   session_start();
   if(!$_SESSION['isLogged'] && !$_SESSION('isManager'))
   {
-    header("location:managementlogin.html");
+    header("location:managementlogin.php");
     die();
   } 
 ?>
 <head>
 	<title> Java City Online Ordering </title>
-	<link rel="stylesheet" type="text/css" href="mystyles.css">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
 </head>
 
 <?php
-include 'managementlinks.php'
+include 'links.php'
 ?>
 
 <body>
@@ -56,5 +63,13 @@ include 'managementlinks.php'
 	<br>
 </center>
 </div>
+<?php
+include 'footer.php';
+?>
 </body>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</html>
 

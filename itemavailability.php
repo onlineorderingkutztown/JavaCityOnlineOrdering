@@ -5,24 +5,34 @@ Prof: Hussain
 -->
 <?php
   session_start();
-  if(!$_SESSION['isLogged'] && !$_SESSION('isManager'))
-  {
-    header("location:managementlogin.html");
-    die();
-  } 
+  require_once 'managerfunctions.php';
+  isManager();
 ?>
 <head>
 	<title> Java City Online Ordering </title>
-	<link rel="stylesheet" type="text/css" href="mystyles.css">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
 </head>
 
-<?php
-include 'links.php'
-?>
-
 <body>
-<div>
-<h2 align="center"> Item Availability </h2>
+    <div class="container">
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Item Availability
+        <small> Kutztown Java City </small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.php">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Item Availability</li>
+      </ol>
 <center>
 	<?php
 	$DB_HOST='localhost';
@@ -34,7 +44,7 @@ include 'links.php'
   	$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 	$query = "SELECT * FROM food";
 	$res = $conn->query($query);
-	echo "<table class= items><tr><th class= items>Food Name</th><th>Availability</th><th>Mark Unavailable</th><th>Remove Item Permanently</th></tr>";
+	echo "<table class= table><tr><th>Food Name</th><th>Availability</th><th>Mark Unavailable</th><th>Remove Item Permanently</th></tr>";
 	while($row = mysqli_fetch_assoc($res))
 	{
 			$id = $row["food_id"];
@@ -56,9 +66,12 @@ include 'links.php'
 	<br>
 </center>
 </div>
-<?php
-echo "<br><br>";
-include 'footer.php';
-?>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
+<?php
+include 'footer.php';
+?>

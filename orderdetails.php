@@ -12,7 +12,14 @@ Prof: Hussain
 ?>
 <head>
 	<title> Java City Online Ordering </title>
-	<link rel="stylesheet" type="text/css" href="mystyles.css">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap core CSS -->
+		<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="css/modern-business.css" rel="stylesheet">
 </head>
 
 <?php
@@ -20,8 +27,18 @@ include 'links.php'
 ?>
 
 <body>
-<div>
-<h2 align="center"> Order Details </h2>
+	<!-- Page Content -->
+    <div class="container">
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Order Details
+        <small> Kutztown Java City </small>
+      </h1>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.php">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Employee Order Details</li>
+      </ol>
 <center>
 	<?php
 	$DB_HOST='localhost';
@@ -33,7 +50,7 @@ include 'links.php'
   	$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 	$query = "SELECT * FROM orders WHERE order_id=".$orderid;
 	$res = $conn->query($query);
-	echo "<table border=1><tr><th>Order ID</th><th>Customer ID</th><th>Customer Name</th><th>Customer Email</th><th>Phone Number</th><th>Time Placed</th><th>Subtotal</th><th>Tax</th><th>Total</th><th>Completed?</th></tr>";
+	echo "<table class= table><tr><th>Order ID</th><th>Customer ID</th><th>Customer Name</th><th>Customer Email</th><th>Phone Number</th><th>Time Placed</th><th>Subtotal</th><th>Tax</th><th>Total</th><th>Status</th></tr>";
 	while($row = $res->fetch_array())
 	{
 		$orderid =  $row["order_id"];
@@ -58,11 +75,11 @@ include 'links.php'
 
 		    if(!$isCompleted)
 		    {
-		        echo "<tr><td>".$orderid."</td><td>".$customerid."</td><td>".$name."</td><td>".$email."</td><td>".$phone."</td><td>".$placed."</td><td>".$subtotal."</td><td>".$tax."</td><td>".$total."</td><td><a href='./completed.php?orderid=".$orderid."'>Complete</a></tr>";
+		        echo "<tr><td>".$orderid."</td><td>".$customerid."</td><td>".$name."</td><td>".$email."</td><td>".$phone."</td><td>".$placed."</td><td>$".$subtotal."</td><td>$".$tax."</td><td>$".$total."</td><td><a href='./completed.php?orderid=".$orderid."'>Complete</a></tr>";
 		    }
 		    else
 		    {
-		        echo "<tr><td>".$orderid."</td><td>".$customerid."</td><td>".$name."</td><td>".$email."</td><td>".$phone."</td><td>".$placed."</td><td>".$subtotal."</td><td>".$tax."</td><td>".$total."</td><td>Completed</tr>";
+		        echo "<tr><td>".$orderid."</td><td>".$customerid."</td><td>".$name."</td><td>".$email."</td><td>".$phone."</td><td>".$placed."</td><td>$".$subtotal."</td><td>$".$tax."</td><td>$".$total."</td><td>Completed</tr>";
 		    }
 	         }
 	echo "</table>";
@@ -84,7 +101,7 @@ include 'links.php'
   	$conn1 = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 	$query1 = "SELECT * FROM order_items WHERE order_id=".$orderid;
 	$res = $conn1->query($query1);
-	echo "<table border><tr><th>Food ID</th><th>Food Name</th><th>Quantity Ordered</th><th>Individual Cost</th></tr>";
+	echo "<table class= table><tr><th>Food ID</th><th>Food Name</th><th>Quantity Ordered</th><th>Individual Cost</th></tr>";
 	while($row = $res->fetch_array())
 	{
 		$foodid = $row["food_id"];
@@ -100,17 +117,17 @@ include 'links.php'
 		    if($size == "Small")
 		    {
 		      $price = $row2["price_s"];
-		      echo "<tr><td>".$foodid."</td><td>".$name."</td><td>".$quantity."</td><td>".$price."</td></tr>";
+		      echo "<tr><td>".$foodid."</td><td>".$name."</td><td>".$quantity."</td><td>$".$price."</td></tr>";
 		    }
 		    else if($size == "Medium")
 		    {
 	              $price = $row2["price_m"];
-		      echo "<tr><td>".$foodid."</td><td>".$name."</td><td>".$quantity."</td><td>".$price."</td></tr>";
+		      echo "<tr><td>".$foodid."</td><td>".$name."</td><td>".$quantity."</td><td>$".$price."</td></tr>";
 		    }
 		    else
 		    {
 		      $price = $row2["price_l"];
-		      echo "<tr><td>".$foodid."</td><td>".$name."</td><td>".$quantity."</td><td>".$price."</td></tr>";
+		      echo "<tr><td>".$foodid."</td><td>".$name."</td><td>".$quantity."</td><td>$".$price."</td></tr>";
 		    }
 		}
 
@@ -122,6 +139,9 @@ include 'links.php'
 </center>
 
 </div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 <?php
 include 'footer.php'

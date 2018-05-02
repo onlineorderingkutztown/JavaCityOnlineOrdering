@@ -15,14 +15,15 @@ function getMenu() {
 function getItemString($item) {
 
     $result = "
+		<tbody>
 		<tr>
-		<td class= menu>$item[2]</td>
+		<td>$item[2]</td>
 		<form onsubmit=false action=cart.php method=get>
 		
-		<td class= menu><input type='radio' name='price' value=$item[4]> $item[4]</td>
-		<td class= menu><input type='radio' name='price' value=$item[5]> $item[5]</td>
-		<td class= menu><input type='radio' name='price' value=$item[6]> $item[6]</td>
-		<td class= menu><input type='number' min='1' max='100' name='quan' value='$item[3]'></td>
+		<td><input type='radio' name='price' value=$item[4]>$$item[4]</td>
+		<td><input type='radio' name='price' value=$item[5]>$$item[5]</td>
+		<td><input type='radio' name='price' value=$item[6]>$$item[6]</td>
+		<td><input type='number' min='1' max='100' name='quan' value='$item[3]'></td>
 		
 		<td><input type='submit' value='Add To Cart'></td>
 		<input type='hidden' name='pid' value='$item[0]'>

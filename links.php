@@ -3,7 +3,19 @@
 Name: Brent Heil
 Prof: Hussain
 -->
+  <head>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+  </head>
+<body>
 <?php
 include ("dbconnect.php");
 session_start();
@@ -13,118 +25,152 @@ if($_SESSION["isLogged"]){
 	$customer=$_SESSION['isCustomer'];
 	if($_SESSION["isManager"]){	
 	echo 
-	"<ul>
-	<li><a href='./index.php'><l>Manager</l></a></li>
-	<li style='float:right'><a href='logout.php'><l> Logout </l></a></li>	
-	<li style='float:right'><a href='createemployeeaccount.php'><l> Create Employee Account </l></a></li>
-	<li style='float:right'><a href='settings.php'><l> Store Settings </l></a></li>
-	<li style='float:right'><a href='itemavailability.php'><l> Item Availability </l></a></li>
-	<li style='float:right'><a href='pastorders.php'><l> Past Orders </l></a></li>
-	<li style='float:right'><a href='managementorders.php'><l> Current Orders </l></a></li>
-	</ul>";
+	"
+    <!-- Navigation -->
+    <nav class='navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top'>
+      <div class='container'>
+        <a class='navbar-brand' href='index.php'>Manager</a>
+        <button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>
+          <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarResponsive'>
+          <ul class='navbar-nav ml-auto'>
+            <li class='nav-item'>
+              <a class='nav-link' href='managementorders.php'>Current Orders</a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' href='pastorders.php'>Past Orders</a>
+            </li>           
+            <li class='nav-item'>
+              <a class='nav-link' href='itemavailability.php'>Item Availability</a>
+            </li>
+			<li class='nav-item'>
+              <a class='nav-link' href='settings.php'>Store Settings</a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' href='createemployeeaccount.php'>Create Employee Account</a>
+            </li>
+			<li class='nav-item'>
+              <a class='nav-link' href='managementsettings.php'>Account Settings</a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' href='logout.php'>Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>	
+	";
 }
 
 else if($_SESSION["isEmployee"]){
 	echo
-	"<ul>
-	<li><a href='./index.php'><l>Employee</l></a></li>		
-	<li style='float:right'><a href='logout.php'><l> Logout </l></a></li>
-	<li style='float:right'><a href='pastorders.php'><l> Past Orders </l></a></li>
-	<li style='float:right'><a href='employeeorders.php'><l> Current Orders </l></a></li>
-	</ul>";
+	"
+    <!-- Navigation -->
+    <nav class='navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top'>
+      <div class='container'>
+        <a class='navbar-brand' href='index.php'>Employee</a>
+        <button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>
+          <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarResponsive'>
+          <ul class='navbar-nav ml-auto'>
+            <li class='nav-item'>
+              <a class='nav-link' href='employeeorders.php'>Current Orders</a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' href='pastorders.php'>Past Orders</a>
+            </li>           
+			<li class='nav-item'>
+              <a class='nav-link' href='employeesettings.php'>Settings</a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' href='logout.php'>Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>	
+	";
 }
 
 else if($_SESSION["isCustomer"]){
 	echo
-	"<ul>
-	<li><a href='./index.php'><l>Customer</l></a></li>			
-	<li style='float:right'><a href='logout.php'><l>Logout</l></a></li>
-	<li style='float:right'><a href='customersettings.php'><l>Settings</l></a></li>
-	<li style='float:right'><a href='kulocation.php'><l>Store Information</l></a></li>	
-	<li style='float:right'><a href='cart.php'><l>Cart</l></a></li>
-	<li style='float:right'><a href='customerorders.php'><l>Orders</l></a></li>
-	<li style='float:right'><a href='favorites.php'><l>Favorites</l></a></li>
-	<li style='float:right'><a href='menu.php'><l>Place Order</l></a></li>
-	</ul>";
+	"
+    <!-- Navigation -->
+    <nav class='navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top'>
+      <div class='container'>
+        <a class='navbar-brand' href='index.php'>Customer</a>
+        <button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>
+          <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarResponsive'>
+          <ul class='navbar-nav ml-auto'>
+            <li class='nav-item'>
+              <a class='nav-link' href='menu.php'>Place Order</a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' href='favorites.php'>Favorites</a>
+            </li>
+			<li class='nav-item'>
+              <a class='nav-link' href='customerorders.php'>Orders</a>
+            </li>
+			<li class='nav-item'>
+              <a class='nav-link' href='cart.php'>Cart</a>
+            </li>
+			<li class='nav-item'>
+              <a class='nav-link' href='contact.php'>Store Information</a>
+            </li>           
+			<li class='nav-item'>
+              <a class='nav-link' href='customersettings.php'>Settings</a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' href='logout.php'>Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>";
   }
 
 }
 else
 {
 	echo
-	"<ul>
-	<li><a href='./index.php'><l>Java City</l></a></li>		
-	<li style='float:right' class='dropdown'><a href= 'logins.php' class='dropbtn'><l>Login</l></a>
-		<div class='dropdown-content'>
-		<a href='customerlogin.php'>Customer</a>
-		<a href='employeelogin.php'>Employee</a>
-		<a href='managementlogin.php'>Manager</a>
-		</div>
-	 </li>
-	<li style='float:right'><a href='kulocation.php'><l> Store Information </l></a></li>
-	<li style='float:right'><a href='about.php'><l> About </l></a></li>
-	<li style='float:right'><a href='menu.php'><l> Menu </l></a></li>
-	</ul>";
+	"
+    <!-- Navigation -->
+    <nav class='navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top'>
+      <div class='container'>
+        <a class='navbar-brand' href='index.php'>Java City</a>
+        <button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>
+          <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarResponsive'>
+          <ul class='navbar-nav ml-auto'>
+            <li class='nav-item'>
+              <a class='nav-link' href='menu.php'>Menu</a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' href='about.php'>About</a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' href='contact.php'>Contact</a>
+            </li>
+            <li class='nav-item dropdown'>
+              <a class='nav-link dropdown-toggle' href='#' id='navbarDropdownPortfolio' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                Login
+              </a>
+              <div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownPortfolio'>
+                <a class='dropdown-item' href='customerlogin.php'>Customer Login</a>
+                <a class='dropdown-item' href='employeelogin.php'>Employee Login</a>
+                <a class='dropdown-item' href='managementlogin.php'>Manager Login</a>
+              </div>
+			</li>
+          </ul>
+        </div>
+      </div>
+    </nav>";
 
 }
 ?>	
-
-<head>
-<style>
-ul {
-    list-style-type: none;
-	border: 0;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #c19d67;
-	text-align: center;
-}
-li {
-    float: left
-}
-li a, .dropbtn {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 15px 40px;
-    text-decoration: none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: #8d7147;
-}
-
-li.dropdown {
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #c19d67;
-    min-width: 120px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: white;
-    padding: 15px 30px;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-}
-
-.dropdown-content a:hover {
-	background-color: #8d7147;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-</style>
-</head>
-
-
+</body>

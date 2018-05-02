@@ -6,22 +6,20 @@ Prof: Hussain
 -->
 <?php
 ob_start();
+require_once 'customerfunctions.php';
+isCustomer();
 ?>
 <head>
 	<title> Java City Online Ordering </title>
-	<link rel="stylesheet" type="text/css" href="mystyles.css"> <style> h1 { font-family: 'Helvetica Neue', sans-serif;
-		font-size: 40px;
-		font-weight: bold;
-		letter-spacing -1px;
-		line-height: 1;
-		text-align: center;
-		text-decoration: underline;
-	}
-	</style>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap core CSS -->
+		<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="css/modern-business.css" rel="stylesheet">
 </head> 
-<?php
-include 'links.php'
-?>
 <body>
 <?php
 require_once 'functions.php';
@@ -39,94 +37,59 @@ require_once 'functions.php';
     {
     }
 ?>
-<div>
-<h2 align="center"> Order Details </h2>
+	<!-- Page Content -->
+    <div class="container">
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Order Information
+        <small> Kutztown Java City </small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.php">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Order Information</li>
+      </ol>
 <center>
-	<?php
-	$DB_HOST='localhost';
-	$DB_USER='cscproject';
-	$DB_PASS='csc354';
-	$DB_NAME='project';
+	<div class="row">
+	<div class="col-md-6">
+	<h2>Order Details</h2>
+<?php
 	$orderid=$_GET['orderid'];
-
-  	$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-	$query = "SELECT * FROM orders WHERE order_id=".$orderid;
-	$res = $conn->query($query);
-	echo "<table class= order><tr><th>Order ID</th><th>Time Placed</th><th>Subtotal</th><th>Tax</th><th>Total</th><th>Completed?</th></tr>";
-	while($row = $res->fetch_array())
-	{
-		$orderid =  $row["order_id"];
-		$placed = $row["placed"];
-		$subtotal = number_format($row["subtotal"], 2);
-		$tax = number_format($row["tax"], 2);
-		$total = number_format($row["total"], 2);
-		$isCompleted = $row["isCompleted"];
-
-
-		if(!$isCompleted)
-		{
-		        echo "<tr><td>".$orderid."</td><td>".$placed."</td><td>".$subtotal."</td><td>".$tax."</td><td>".$total."</td><td>Not Completed</td></tr>";
-		}
-		else
-		{
-		        echo "<tr><td>".$orderid."</td><td>".$placed."</td><td>".$subtotal."</td><td>".$tax."</td><td>".$total."</td><td>Completed</tr>";
-		}
-	echo "</table>";
-	}
-  $conn->close();
+    	require_once 'customerfunctions.php';
+	orderDetails($orderid);
 ?>
-	<br>
-	</center>
+	</div>
 	
-<h2 align="center"> Items In Order </h2>
-<center>
-	<?php
-	$DB_HOST='localhost';
-	$DB_USER='cscproject';
-	$DB_PASS='csc354';
-	$DB_NAME='project';
+	<div class="col-md-6">
+	<h2 align="center"> Items In Order </h2>
+<?php
 	$orderid=$_GET['orderid'];
-
-  	$conn1 = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-	$query1 = "SELECT * FROM order_items WHERE order_id=".$orderid;
-	$res = $conn1->query($query1);
-	echo "<table class= order><tr><th>Food ID</th><th>Food Name</th><th>Quantity Ordered</th><th>Individual Cost</th></tr>";
-	while($row = $res->fetch_array())
-	{
-		$foodid = $row["food_id"];
-		$quantity= $row["quantity"];
-		$size = $row["Size"];
-		
-  		$conn2 = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-		$query2 = "SELECT * FROM food WHERE food_id=".$foodid;
-		$res2 = $conn2->query($query2);
-		while($row2 = $res2->fetch_array())
-		{
-		    $name = $row2["name"];
-		    if($size == "Small")
-		    {
-			$price_s = $row2["price_s"];
-		        echo "<tr><td>".$foodid."</td><td>".$name."</td><td>".$quantity."</td><td>".$price_s."</td></tr>";
-		    }else if($size == "Medium")
-		    {
-			$price_m = $row2["price_m"];
-		        echo "<tr><td>".$foodid."</td><td>".$name."</td><td>".$quantity."</td><td>".$price_m."</td></tr>";
-		    }
-		    else
-		    {
-			$price_l = $row2["price_l"];
-		        echo "<tr><td>".$foodid."</td><td>".$name."</td><td>".$quantity."</td><td>".$price_l."</td></tr>";
-		    }
-		}
-
-	}
-	echo "</table>";
-  $conn->close();
+	require_once 'customerfunctions.php';
+	itemsInOrder($orderid);
 ?>
 	<br>
+	</div>
+	</div>
+<?php
+	$orderid=$_GET['orderid'];
+	$totaltime = getOrderTime($orderid);
+
+	if ($totaltime == 0){
+		echo "<center><h2>Order Complete<h2></center>";
+	}
+	else{
+	echo "<center>
+	<h2>Order will be ready in ".$totaltime." minute(s)</h2>
+	</center>";
+	}
+?>
 </center>
 
 </div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 <?php
 include 'footer.php'

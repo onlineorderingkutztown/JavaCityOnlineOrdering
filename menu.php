@@ -9,13 +9,31 @@ Prof: Hussain
 -->
 <head>
 	<title> Java City Online Ordering </title>
-	<link rel="stylesheet" type="text/css" href="mystyles.css">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
 </head>
 
 <body> 
-<div>
-<center>
-<h1> Menu </h1>
+	<!-- Page Content -->
+    <div class="container">
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Menu
+        <small> Kutztown Java City </small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.php">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Menu</li>
+      </ol>
+	  <center>
 <?php
 require_once 'functions.php';
 
@@ -23,14 +41,14 @@ $menuItems = getMenu();
 
 echo
 "
-	<table class= menu>
+	<table class= table table-bordered>
 	<tr>
-		<th class= menu> Name </th>
-		<th class= menu> Small </th>
-		<th class= menu> Medium </th>
-		<th class= menu> Large </th>
-		<th class= menu> Quantity </th>
-		<th class= menu> Order </th>
+		<th> Name </th>
+		<th> Small </th>
+		<th> Medium </th>
+		<th> Large </th>
+		<th> Quantity </th>
+		<th> Order </th>
 	</tr>
 ";
 
@@ -40,11 +58,10 @@ foreach($menuItems as $item) {
 
 echo
 "
+	</tbody>
 	</table>
 	<br><br>
 ";
-
-include 'footer.php';
 ?>
 
  <!--	<div class="footer"> <a href="./index.html"> Home </a> &nbsp; <a href="./login.html"> Login </a>&nbsp;
@@ -52,8 +69,14 @@ include 'footer.php';
 		<a href="./contact.html"> Contact Us </a>
 		</div> 
   -->
-</center>
+  </center>
 </div>
+<?php
+include 'footer.php';
+?>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 

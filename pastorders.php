@@ -1,49 +1,47 @@
 <head>
 	<title> Java City Online Ordering </title>
-	<link rel="stylesheet" type="text/css" href="mystyles.css">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap core CSS -->
+		<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="css/modern-business.css" rel="stylesheet">
 </head>
 <?php
   session_start();
-  if(!$_SESSION['isLogged'] && !$_SESSION['isManager'])
-  {
-    header("location:managementlogin.html");
-    die();
-  } 
-  include 'links.php';
+  require_once 'managerfunctions.php';
+  isBoth();
 ?>
 
 <body>
-<div>
-<center>
-	<h2> Past Orders </h2>
-</center>
+	<!-- Page Content -->
+    <div class="container">
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Past Orders
+        <small> Kutztown Java City </small>
+      </h1>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.php">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Past Orders</li>
+      </ol>
 <center>
 	<?php
-	$DB_HOST='localhost';
-	$DB_USER='cscproject';
-	$DB_PASS='csc354';
-	$DB_NAME='project';
-
-
-  	$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-	$query = "SELECT * FROM orders WHERE isCompleted=1";
-	$res = $conn->query($query);
-	echo "<table class= order><tr><th>Order ID</th><th>Order Details</th><th>Time Placed</th><th>Total</th></tr>";
-	while($row = mysqli_fetch_assoc($res))
-	{
-			$title =  $row["order_id"];
-			$author2 = $row["placed"];
-			$price = number_format($row["total"], 2);
-
-			echo "<tr><td>".$title."</td><td><a href='./orderdetails.php?orderid=".$title."'>Order Details</a></td><td>".$author2."</td><td>".$price."</td></tr>";
-	}
-	echo "</table><br><br>";
-  $conn->close();
-?>
+  		require_once 'managerfunctions.php';
+  		getPastOrders();
+	?>
 <br>
-</div>
 </center>
+
+</div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
 <?php
 include 'footer.php';
 ?>
-</body>

@@ -1,42 +1,21 @@
 <?php
+	require_once 'managerfunctions.php';
 	$email = $_POST['email'];
   	$password = $_POST['password'];
 	$password = hash('sha512', $password);
-
-	$DB_HOST='localhost';
-	$DB_USER='cscproject';
-	$DB_PASS='csc354';
-	$DB_NAME='project';
-
-  	$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-	$query = "SELECT password, isManager FROM employees WHERE email = '$email'";
-	$res = $conn->query($query);
-	while($row = mysqli_fetch_assoc($res))
-		if ($row["password"] == "$password" && $row["isManager"] == 1)
-		{
-			session_start();
-			$_SESSION["isLogged"] = true;
-			$_SESSION["isManager"] = true;
-			$_SESSION["isEmployee"] = false;
-			$_SESSION["isCustomer"] = false;
-			header('Location: managementorders.php');
-		}
-	$conn->close();
-	include 'links.php'
+	login($email, $password);
+	include 'links.php';
 ?>
 <head>
-	<title> Login </title>
-	<link rel="stylesheet" href="mystyles.css">
-	<style type="text/css">
-	.container {
-		width: 500px;
-		clear: both;
-	}
-	.container input {
-		width: 100%;
-		clear: both;
-	}
-	</style>
+	<title> Manager Login </title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
 	<!--
 	Function output()
 	Parameters: None
@@ -76,32 +55,29 @@
 	-->
 	</script>
 </head>
-<body>
-<a href="./index.php"><img src="Images/javalogo.png" alt="javalogo" style="width:100px;height 200px;"></a>
-<div>
-<h2> Incorrect E-Mail/Password/Privilege Level </h2>
-<center>
-<form name="login" action="badmanagementlogin.php" method="POST">
-  <h2> Management Login </h2>
-  <table>
-    <tr>
-      <td align="right">E-Mail:<font color=red>*</font></td>
-      <td align="left"><input type="text" id="email" name="email" value="<?php echo $email;?>" required/></td>
-		</tr>
-		<tr>
-      <td align="right">Password:<font color=red>*</font></td>
-      <td align="left"><input type="password" id="password" name="password" required/></td>
-    </tr>
-	</table>
-	&emsp; &emsp; &emsp; &emsp;<font color=red>*</font> denotes required field. <br>
-	&emsp; &emsp; &emsp; &emsp;<input type="button" value="Login" onclick="output();">
-	<input type="reset" value="Clear" onclick="return confirm ('Are you sure you want to clear?');">
-	
-	<br>
-</center>
+<body class="text-center">
+<div class="container">
+<form class="form-signin" name="login" action="badmanagementlogin.php" method="POST">
+  <img class="mb-4" src="Images/javalogo.png" alt="" width="72" height="72">
+  <h1 class="h3 mb-3 font-weight-normal">Incorrect E-Mail/ Password/ Privilege Level</h1>
+  <h1 class="h3 mb-3 font-weight-normal">Kutztown University Manager Login</h1>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+	  <br><br>
+	<p> Don't have an account? Talk to another Manager. </p>
+	<br><br>
 </form>
-</div>
+</div class="container">
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
-<?php
-include 'footer.php'
-?>
+

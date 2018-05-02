@@ -3,46 +3,44 @@
 <script src="js/combodate.js"></script>
 <?php
   session_start();
-  include 'links.php';
-  if(!$_SESSION['isLogged'])
-  {
-    header("location:managementlogin.html");
-    die();
-  } 
+  require_once 'managerfunctions.php';
+  isManager();
 ?>
 
 <head>
 	<title> Java City Online Ordering </title>
-	<link rel="stylesheet" type="text/css" href="mystyles.css">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
 </head>
 <body>
-<div>
+    <div class="container">
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Store Settings
+        <small> Kutztown Java City </small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.php">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Store Settings</li>
+      </ol>
+	 </div> 
+	 
 	<center>
 		<?php
-		$DB_HOST='localhost';
-		$DB_USER='cscproject';
-		$DB_PASS='csc354';
-		$DB_NAME='project';
-
-		$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-		$query = "SELECT * FROM store";
-		$res = $conn->query($query);
-		echo "<h2>Store Hours</h2>";
-		echo "<p> Configure the order platform to best suit your needs <p> <br>";
-		echo "<table class= hours><tr><th>Open</th><th>Close</th></tr>";
-		while($row = mysqli_fetch_assoc($res))
-		{
-			$open = $row["open_hour"];
-			$open = date("g:i a", strtotime($open));
-			$close = $row["close_hour"];
-			$close = date("g:i a", strtotime($close));
-			echo "<tr><td>".$open."</td><td>".$close."</td></tr>";
-		}
-		echo "</table>";
-		$conn->close();
+		require_once 'managerfunctions.php';
+  		getStoreHours();
 		?>
-
+	<div class="col-md-6">
 		<h2>Set Store Hours</h2>
+		<p> Configure the order platform to best suit your needs <p>
 		<form action = "updatehours.php" method="get">
 		Open:
 		<input type="text" id="timeopen" data-format="h:mm a" data-template="hh : mm a" name="timeam" value="7:00 am">
@@ -61,11 +59,14 @@
 		</script><br><br>
 		<input type="submit" value="Update Hours">
 		</form>
-		</center>
-</div>
+		</div>
+	</center>
 <?php
 echo"<br><br>";
 include 'footer.php';
 ?>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 

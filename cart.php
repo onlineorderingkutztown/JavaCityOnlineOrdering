@@ -6,30 +6,39 @@ Prof: Hussain
 -->
 <head>
 	<title> Java City Online Ordering </title>
-	<link rel="stylesheet" type="text/css" href="mystyles.css"> <style> 
-	h1 { font-family: 'Helvetica Neue', sans-serif;
-		font-size: 40px;
-		font-weight: bold;
-		letter-spacing -1px;
-		line-height: 1;
-		text-align: center;
-		text-decoration: underline;
-	}
-	</style>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap core CSS -->
+		<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="css/modern-business.css" rel="stylesheet">
 </head> 
 <?php
 include 'links.php'
 ?>
 <body>
-<center>
 <?php
 require_once 'functions.php';
-echo "<h2> Cart </h2>";
+echo "<div class='container'>
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class='mt-4 mb-3'>Cart
+        <small> Kutztown Java City </small>
+      </h1>
+
+      <ol class='breadcrumb'>
+        <li class='breadcrumb-item'>
+          <a href='index.php'>Home</a>
+        </li>
+        <li class='breadcrumb-item active'>Cart</li>
+      </ol>
+	  </div>";
     $exist = isset($_SESSION['user']);
     $total = 0;
     if(!$exist)
     {
-      echo "<div><p>Please Log In to save items to the cart.</p></div>";
+      echo "<div class='container'><p>Please Log In to save items to the cart.</p></div>";
     }else
     {		
     	if(!isset($_SESSION['cartprice']))
@@ -54,7 +63,14 @@ echo "<h2> Cart </h2>";
     		{
     			$_SESSION['cartprice'][$_GET['pid']] = $_GET['price'];
     		}
-
+	echo "
+	<div class='container'>
+			<table class= table><tr>
+			<th>Product Name</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th>Remove</th>
+			</tr>";
     	}
      
 	if(isset($_GET['remove']))
@@ -62,7 +78,6 @@ echo "<h2> Cart </h2>";
 		UNSET($_SESSION['cartprice'][$_GET['remove']]);
 		UNSET($_SESSION['cartquan'][$_GET['remove']]);
 	}
-
 
 	foreach($_SESSION['cartquan'] as $key => $value)
     	{
@@ -72,7 +87,7 @@ echo "<h2> Cart </h2>";
 	$quant = $_SESSION['cartquan'][$key];
 	$price = $_SESSION['cartprice'][$key];
 
-    	echo "<table class= order><tr>
+    	echo "<tr>
 			<td>$name</td>
           	<td>&#36; $price</td><br>
             <td>Quantity: $quant</td>
@@ -80,8 +95,7 @@ echo "<h2> Cart </h2>";
           	<form action=cart.php method=get>
                 <input type=hidden name=remove value='$key'>
                 <input type='submit' value='Remove'></td>
-          	     </form></tr>				
-				 </table>";
+          	     </form></tr>";
     	} 
 
 if(!(empty($_SESSION['cartquan'])))
@@ -109,8 +123,10 @@ if(!(empty($_SESSION['cartquan'])))
 	$res = $conn->query($query);
 	while($row = mysqli_fetch_assoc($res))
 	{
-		echo"<div><p>Order Total = $Stotwtax<br>
-                    (Sales tax of 6% included)<br>";
+		echo"<tfoot><tr><td>Order Total = $$Stotwtax</td>
+					<td> </td> <td> </td> <td> </td>
+					</tr></tfoot></table>
+					(Sales tax of 6% included)<br>";
                     echo"<form action=cart.php method=get>
                     <input type=hidden name=checkout value='1'>";
 
@@ -121,7 +137,7 @@ if(!(empty($_SESSION['cartquan'])))
 		$time = date("H:i:s");
 		if($time > $open && $time < $close)
 		{
-                    echo "<input type='submit' value='Checkout'>";
+                    echo "<center><input type='submit' value='Checkout'></center><br>";
 		}
 		else
 		{
@@ -187,18 +203,24 @@ if(!(empty($_SESSION['cartquan'])))
 if((empty($_SESSION['cartquan'])))
 {
 echo "
-<div>
+<div class='container'>
+<center>
 <p> The cart is currently empty. Check out the menu to place an order!</p>
 </div>
+</center>
 <br><br>";
 }
 
 
     }
 
-include 'footer.php';
 
 ?>
-</center>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
+<?php
+include 'footer.php';
+?>

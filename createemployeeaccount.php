@@ -1,13 +1,16 @@
 <?php
 include 'links.php'
 ?>
-
 <head>
 	<title> Create Account </title>
-	<link rel="stylesheet" href="mystyles.css">
-	<style type="text/css">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	</style>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
 	<!--
 	Function output()
 	Parameters: None
@@ -48,46 +51,48 @@ include 'links.php'
 	</script>
 </head>
 <body>
-<a href="./index.php"><img src="Images/javalogo.png" alt="javalogo" style="width:100px;height 200px;"></a>
-<div>
-<center>
+<div class="container">
 <form name="createaccount" action="verifyemployeeaccount.php" method="GET">
-  <h2> Create Account </h2>
-  <table>
-    <tr>
-      <td align="right">First Name:<font color=red>*</font></td>
-      <td align="left"><input type="text" id = "first" name="first" required/></td>
-      <td align="right">Last Name:<font color=red>*</font></td>
-      <td align="left"><input type="text" id = "last" name="last" required/></td>
-    </tr>
-    <tr>
-      <td align="right">Work Email:<font color=red>*</font></td>
-      <td align="left"><input type="text" id="email" name="email" required/></td>
-    </tr>
-    <tr>
-      <td align="right">Password:<font color=red>*</font></td>
-      <td align="left"><input type="password" id="password" name="password" required/></td>
-			<td align="right">Confirm Password<font color=red>*</font>:</td>
-      <td align="left"><input type="password" id="pconfirm" name="confirmpassword" required/></td>
-    </tr>
-    <tr>
-       <td>Manager?<font color=red>*</font></td>
-       <td><select name="isManger" id="isManager" required>
-	  <option value="No">No</option>
-	  <option value="Yes">Yes</option>
-       </select></td>
-     </tr>
-     </table>
-	<p><font color=red>*</font> denotes a required field </p>
-	<!-- <input type="button" value="Create Account" onclick="output();"> -->
-	<input type="submit" value = "Submit">
-	<input type="reset" value="Clear" onclick="return confirm('Are you sure you want to clear the form?');" style="width:100px">
-	
-</form>
+<center>
+  <img src="Images/javalogo.png" alt="" style="width:100px;height 200px;">
+  <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
 </center>
+    <div class="row">
+		<div class="col-md-6 mb-3">
+			<label for="firstName">First Name:</label>
+			<input type="text" class="form-control" id = "first" name="first" required/>
+		</div>
+		<div class="col-md-6 mb-3">
+			<label for="lastName">Last Name:</label>
+			<input type="text" class="form-control" id = "last" name="last" required/>
+		</div>
+		<div class="col-md-8 mb-3">
+			<label for="wEmail">Work Email:</label>
+			<input type="text" class="form-control" id = "email" name="email" required/>
+		</div>
+		<div class="col-md-6 mb-3">
+			<label for="Pword">Password:</label>
+			<input type="password" class="form-control" id = "password" name="password" required/>
+		</div>
+		<div class="col-md-6 mb-3">
+			<label for="cPword">Confirm Password:</label>
+			<input type="password" class="form-control" id = "pconfirm" name="confirmpassword" required/>
+		</div>
+		<center>
+			<label for="Manager">Manager:</label>
+			<select name="isManger" id="isManager" required>
+				<option value="No">No</option>
+				<option value="Yes">Yes</option>
+			</select>
+		</center>
+	<!-- <input type="button" value="Create Account" onclick="output();"> -->
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
+	</div>
+</form>
 </div>
-<?php
-echo "<br><br>";
-include 'footer.php';
-?>
+</center>
 </body>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

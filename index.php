@@ -3,208 +3,74 @@
 Name: Bryce Andress, Brent Heil
 Prof: Hussain
 
-Slideshow - w3schools.com
+Slideshow - Bootstrap
 -->
 
 <head>
 	<title> Java City Online Ordering </title>
-<style>
-h1 {
-		font-family: 'Helvetica Neue', sans-serif;
-		font-size: 35px;
-		font-weight: bold;
-		letter-spacing -1px;
-		line-height: 1;
-		text-align: center;
-		color: white;
-}
-h2{
-	font: bold 25px arial, sans-serif;
-}
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-h3{
-	font: bold 20px arial, sans-serif;	
-}
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
-p{
-	font: 15px arial, sans-serif;
-}
-
-l{
-	font: 18px arial, sans-serif;
-}
-
-td{
-	text-align: justify;
-}
-
-th{
-	text-align: left;	
-}
-
-body{
-	border: 0;
-	margin: 0;
-	padding: 0;             
-}
-a{
-	text-decoration: none;
-	font: 15px Helvetica Neue, sans-serif;
-}
-
-ul {
-    list-style-type: none;
-	border: 0;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #c19d67;
-}
-li {
-    float: left;
-}
-li a, .dropbtn {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 15px 50px;
-    text-decoration: none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: #8d7147;
-}
-
-li.dropdown {
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #c19d67;
-    min-width: 120px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: white;
-    padding: 6px 6px;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-}
-
-.dropdown-content a:hover {
-	background-color: #8d7147
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-
-* {box-sizing:border-box}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1920px;
-  max-height: 350px;
-  position: relative;
-  margin: auto;
-}
-
-/* Hide the images by default */
-.mySlides {
-    display: none;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-.text {
-  color: #070707;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-</style>
-
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
 </head>
+<body>
 <?php
   include 'links.php';
 ?>
+    <header>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <!-- Slide One - Set the background image for this slide in the line below -->
+          <div class="carousel-item active">
+		  <img src="Images/coffee.jpg" style="height:100%; width:100%;">
+            <div class="carousel-caption d-none d-md-block">
+              <img src="Images/javalogo.png" alt="javalogo" style="width:150px;height 225px;">
+			  <br><br><br><br><br><br><br><br><br>
+			  <h3>Welcome to Kutztown University's</h3>
+              <h3>Online Ordering System</h3>
+            </div>
+          </div>
+          <!-- Slide Two - Set the background image for this slide in the line below -->
+          <div class="carousel-item">
+		  <img src="Images/scrollbar.jpg" style="height:100%; width:100%";>
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+          </div>
+          <!-- Slide Three - Set the background image for this slide in the line below -->
+          <div class="carousel-item">
+		  <img src="Images/wallpaper.jpg" style="height:100%; width:100%;">
+            <div class="carousel-caption d-none d-md-block">
+			  <img src="Images/javalogo.png" alt="javalogo" style="width:150px;height 225px;">
+			  <br><br><br><br><br><br><br><br><br>
+			  <h3>Come on in and try one of our delicious new drinks!</h3>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </header>
+<?php
+include 'footer.php';
+?>
+
+<?php
+/**
 <body>
 <!-- Slideshow container -->
 <div class="slideshow-container">
@@ -274,12 +140,8 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 </script>
-	
-<!--	
-	  <img src="Images/javalogo.png" alt="javalogo" style="width:200px;height 300px;">
-	  <h1> Online Ordering Platform </h1>
-	  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	  
-	  <p><small> This is a project and not an actual store. This website is only used for educational purposes. </small></p>
--->	
+*/
+?>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

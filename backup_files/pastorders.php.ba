@@ -1,0 +1,46 @@
+<head>
+	<title> Java City Online Ordering </title>
+	<link rel="stylesheet" type="text/css" href="mystyles.css">
+</head>
+<?php
+  session_start();
+  require_once 'managerfunctions.php';
+  isManager();
+?>
+
+<body>
+<div>
+<center>
+	<h2> Past Orders </h2>
+</center>
+<center>
+	<?php
+  	require_once 'managerfunctions.php';
+  	getPastOrders();
+	/*$DB_HOST='localhost';
+	$DB_USER='cscproject';
+	$DB_PASS='csc354';
+	$DB_NAME='project';
+
+  	$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+	$query = "SELECT * FROM orders WHERE isCompleted=1";
+	$res = $conn->query($query);
+	echo "<table class= order><tr><th>Order ID</th><th>Order Details</th><th>Time Placed</th><th>Total</th></tr>";
+	while($row = mysqli_fetch_assoc($res))
+	{
+			$title =  $row["order_id"];
+			$author2 = $row["placed"];
+			$price = number_format($row["total"], 2);
+
+			echo "<tr><td>".$title."</td><td><a href='./orderdetails.php?orderid=".$title."'>Order Details</a></td><td>".$author2."</td><td>".$price."</td></tr>";
+	}
+	echo "</table><br><br>";
+	$conn->close();*/
+?>
+<br>
+</div>
+</center>
+<?php
+include 'footer.php';
+?>
+</body>
